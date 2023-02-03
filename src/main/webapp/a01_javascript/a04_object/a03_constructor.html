@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+	<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+</body>
+<script type="text/javascript">
+/*
+ 	#생성자 함수
+ 		1. 함수모양의 객체를 말한다.
+ 		 	function 객체명()
+ 		2. this.속성 형식으로 현재 객체의 멤버 변수를 설정한다.
+ 		3. 기본 형식
+ 			function Object명(매개변수1, 매개변수2){
+				this.속성1 = 매개변수1
+				this.속성2 = 매개변수2
+				this.속성3 = function(){} //메서드
+			}
+		var 참조명 = new Object명(데이터1,데이터2)
+ */
+var div = document.body.querySelector("#container")
+function Student(name,kor,math,eng){
+			this.name=name
+			this.kor=kor
+			this.math=math
+			this.eng=eng
+			this.getSum = function(){
+				return this.kor+this.math+this.eng
+			}
+			this.getAvg = function(){
+				return this.getSum()/3
+			}
+		}
+var s01 = new Student("홍길동",70,80,90)
+div.innerHTML+=s01.name+"의 평균:"+s01.getAvg()+"<br>"
+div.innerHTML="";
+// ex) 월드컵  팀명,조,승,무,패로 함수형 객체를 선언하고
+//      특정팀의 기록을 출력하세요
+function Team(nation,part,win,eq,def){
+		this.nation=nation
+		this.part=part
+		this.win=win
+		this.eq=eq
+		this.def=def
+		this.record=function(){
+			div.innerHTML+="<h2>"+this.nation+","+this.part+","+
+			this.win+"승 ,"+this.eq+"무,"+this.def+"패</h2>"
+		}
+}
+
+var team = new Team("벨기에","F조",1,0,1)
+team.record()
+div.innerHTML="";
+var teams=[]
+teams.push(team)
+teams.push(new Team("크로아티아","F조",1,1,0))
+teams.push(new Team("모로코","F조",1,1,0))
+teams.push(new Team("캐나다","F조",0,0,0))
+teams.forEach(function(t01){
+	t01.record()
+})
+
+//ex) 위Student객체를 배열형태로 선언하고 추가하여 학생 3명의 점수를 출력하세요
+var Students=[]
+Students.push(s01)
+Students.push(new Student("박길동",30,40,50))
+Students.push(new Student("김길동",80,90,90))
+Students.push(new Student("정길동",20,60,70))
+var show="<h2>학생성적</h2>"
+show+="<table><tr><th>이름</th><th>국어</th><th>수학</th><th>영어</th><th>총점</th><th>평균</th></tr>"
+
+Students.forEach(function(s11){
+	show+="<tr>"
+	for(var pro in s11){
+		if(pro=="getSum"||pro=="getAvg"){
+			show+="<td>"+parseInt( s11[pro]() )+"</td>"
+		}else{
+			show+="<td>"+s11[pro]+"</td>"
+		}
+		
+	}
+	show+="</tr>"
+})
+show+="</table>"
+div.innerHTML=show;
+</script>
+</html>

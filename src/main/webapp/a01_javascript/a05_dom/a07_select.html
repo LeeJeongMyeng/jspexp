@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+	<h2>현거주지</h2>
+	<input type="radio" name="r01" value="서울/경기"/>서울/경기
+	<input type="radio" name="r01" value="지방"/>지방
+	
+	<div id="container"></div>
+
+
+	<h2>성별선택</h2>
+	<select name="gender" onchange="selGen(this)">
+		<option selected>남
+		<option>여
+	</select>
+	<input type="button" onclick="chGen()" value="성별선택"/>
+	<h2>선택된 성별:<span id="chG">남</span></h2>
+	<h2>선택된 성별:<span id="chG2"></span></h2>
+	<!-- radio는 단일 객체이기에 바로 처리해도된다.
+	1. radio는 name이 동일한경우 하나만 체크된다. -->
+
+
+</body>
+<script type="text/javascript">
+
+ var r01Arr = document.querySelectorAll("[name=r01]")
+ var div = document.body.querySelector("#container")
+ for(var idx=0; idx<r01Arr.length; idx++){
+	 //객체.속성=익명함수 : 함수안으로 들어가기에 위에 있는 변수를 인식하지못함
+	 r01Arr[idx].onclick=function(){
+		 //r01Arr을 인식을 하나,  위 반복문의 idx를 인식하지 못해서 처리되지 못한다.
+		 // 여기서 반복문을 수행하거나 this를 활용해야한다.
+		 //var ck=""
+		 if(this.checked){ //radio는 하나만 이벤트가 일어나기때문에 this처리
+			 div.innerText=this.value
+		 }
+		 //div.innerText=ck
+	 }
+ }
+
+ var chG = document.querySelector("#chG")
+ var chG2 = document.querySelector("#chG2")
+ function selGen(obj){
+	 chG.innerText = obj.value
+ }
+ 
+ function chGen(){
+	 //select의 하위에 선택옵션을 배열처리
+	 var opts = document.querySelectorAll("[name=gender]>option")
+ 	 for(var idx=0; idx<opts.length; idx++){
+ 		 if(opts[idx].selected){//선택이 되어있을 때
+ 			 chG2.innerText = opts[idx].value
+ 		 }
+ 	 }
+ }
+
+
+
+// 
+</script>
+</html>

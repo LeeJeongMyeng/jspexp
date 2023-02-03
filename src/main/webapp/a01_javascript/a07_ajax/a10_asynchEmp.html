@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+  <!-- ex) z10_DB_fmt.jsp에 form화면을 만들고 요청값을 전달  -->
+ <table>
+
+	<tr></tr>
+	<tr><td>사원명<input type="text" class="sch" name="ename" value=""/></td>
+	<td>직책<input type="text" class="sch" name="job" value=""/> </td>
+	<td>시작급여<input type="text" class="sch" name="frSal" value=""/> </td>
+	<td>끝급여<input type="text" class="sch" name="toSal" value=""/> </td></tr>
+	<tr><td colspan="4"><input type="button" id="schBtn" value="검색"/></td></tr>
+
+</table>
+<div id="container"></div>
+
+</body>
+<script type="text/javascript">
+
+ 
+var enameOb=document.querySelector("[name=ename]")
+var jobOb=document.querySelector("[name=job]")
+var frSalOb=document.querySelector("[name=frSal]")
+var toSalOb=document.querySelector("[name=toSal]")
+
+var schArr=document.querySelectorAll(".sch")
+var schBtn=document.querySelector("#schBtn") 
+ 
+schArr.forEach(function(sch){
+	sch.onkeyup=function(){
+		if(event.keyCode==13){
+			search()
+		}
+	}
+})
+
+schBtn.onclick=search
+
+function search(){
+		 var ename= enameOb.value
+		 var job= jobOb.value
+		 var frsal= frSalOb.value
+		 var tosal= toSalOb.value
+		 var qStr = "?ename="+ename+"&job="+job+"&frsal="+frsal+"&tosal="+tosal
+		console.log(qStr)
+		loadDataEmp(qStr)
+	 }
+	 
+
+function loadDataEmp(qStr){
+	var xhr = new XMLHttpRequest()
+	xhr.open("get","z10_DB_fmt.jsp"+qStr,true)
+	xhr.send()
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4&&xhr.status==200){
+			document.body.querySelector("#container").innerHTML=xhr.responseText
+		}
+	}
+}
+ 
+ 
+
+
+</script>
+</html>

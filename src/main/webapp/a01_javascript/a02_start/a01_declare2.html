@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+*/
+</style>
+<script>
+/*
+*/
+</script>
+</head>
+<body>
+	<div>
+	</div>
+</body>
+<script type="text/javascript">
+/*
+  #변수 선언 형식(es6이후 지원)
+ 	1. 지역변수
+ 		특정한 범위의 괄호안에서만 사용가능하고 영향을 미치는 변수
+ 	2. 전역변수
+ 		다른 괄호(범위)에서도 사용 가능하고 영향을 미치는 변수
+ 	3. 상수
+ 		초기 변수를 할당 했을 때, 변경되지 않는 데이터 처리.
+ 	
+ */
+ 
+ //1. 전역변수
+ var globalVar =52;
+ //2. 지역/전역변수
+ let localGlobalVal = 270;
+ // 3. 상수
+ const constVar = 103;
+// constVar = 30
+ var body = document.body
+ body.innerHTML = "지역 변수:"+globalVar+"<br>"
+ body.innerHTML += "지역/전역 변수:"+localGlobalVal+"<br>"
+ body.innerHTML += "상수:"+constVar+"<br>"
+ 
+//var 전역변수 : 함수/객체/if/for의 내부에 선언되더라도 어디서나 호출해서 사용가능한 "전역"변수이다.
+{ var var01=273;} //중괄호 블럭 내부에서 선언
+{body.innerHTML += "다른블럭에서 호출:"+var01+"<br>"}//다른 중괄호에서 var01 호출
+ body.innerHTML += "포함하는 외부 범위에서 호출:"+var01+"<br>"
+ //var변수의 전역변수에 원하지않는 데이터 처리에 문제가 발생해서 let변수를
+ // es6버전 부터는 추가해서 처리.
+//let을 통한 전역/지역변수 구분
+let let02 = 999;
+{ let let01 = 500;}
+{
+	let let01=100; // 해당블럭에서의 지역번수이다.
+	body.innerHTML += " 지역 let변수를 다른블럭에서 호출:"+let01+"<br>"
+	body.innerHTML += " 전역 let변수를 다른블럭에서 호출:"+let02+"<br>"
+}//다른 중괄호에서 var01 호출}
+ 
+ //위와 같은 중괄호 블럭은 객체, 함수, 조건, 반복분 등 모든 내용에 전역/지역변수 개념을 구분하여 적용된다.
+ 
+ //ex) let 전역변수로 총계를 선언하고 for문 안에 let지역변수로 단위 카운트 데이터를 할당하여
+ 	// 화면에 출력하게하여 1~10 총합 :55가 for문을 통해서 나오도록하세요
+ 	let tot01=0;
+ {
+	 for(let cnt=1; cnt<=10; cnt++){
+		 body.innerHTML += cnt;
+		 if(cnt!=10){body.innerHTML+=",";}
+		 tot01 +=cnt;
+	 }
+	 body.innerHTML += "총계:"+tot01+"<br>";
+ }
+
+	var tot02=0;
+	 {
+		 for(var cnt2=1; cnt2<=10; cnt2++){
+			 body.innerHTML += cnt2;
+			 if(cnt2!=10){body.innerHTML+=",";}
+			 tot02 +=cnt2;
+		 }
+		 body.innerHTML += "총계:"+tot02+"<br>";
+	 }
+ 
+	 let likePt=0;
+	 function likeHandler(){
+		 likePt++;
+		 showLike();
+		 
+	 }
+	 function dislikeHandler(){
+		 likePt--;
+		 showLike();
+	 }
+	 function showLike(){
+		 var show = document.querySelector("#show");
+		 show.innerText="";
+		 for(let cnt=1;cnt<=likePt; cnt++){
+			 show.innerText+="♥";
+		 }
+	 }
+	 
+	 
+// <span onclick="likeHandler()">좋아요</span> 
+// <span onclick="dislikeHandler()">싫어요</span> 
+// <h2 id=show></h2>
+	 
+	 
+</script>
+</html>

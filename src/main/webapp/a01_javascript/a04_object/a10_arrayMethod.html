@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+	<div id="container2"></div>
+
+
+</body>
+<script type="text/javascript">
+/* 1) length: 배열요소의 갯수
+	2) concat():배열 요소를 이어주는 역할
+	3) join() : 모든 요소 문자열
+	4) pop() : 마지막요소 제거 및 리턴 처리
+	5) push() : 마지막에 요소 추가
+	6) reverse() : 배열 데이터 뒤집기 처리
+	7) slice(index시작, 마지막) : 지정부분 추출하여 배열처리
+		해당 목록 중, slice만 구조에 영향을 미치지 않는다.
+	8) sort() : 정렬처리
+	9) splice() : 지정부분 삭제, 삭제한 요소 리턴
+	*/
+var div = document.body.querySelector("#container")
+var div2 = document.body.querySelector("#container2")
+var array = ["사과","바나나","딸기","오렌지","키위"]
+
+div.innerHTML=array.join("-")+"<br>"
+div.innerHTML+="pop"+array.pop("-")+"<br>" // 삭제될 마지막 데이터를 리턴하고 구조는 변경
+div.innerHTML+="pop이후:"+array+"<br>"
+array.push("수박")
+div.innerHTML+="push 이후:"+array+"<br>"
+div.innerHTML+="reverse():"+array.reverse()+"<br>"
+div.innerHTML+="slice:"+array.slice(1,2)+"<br>"
+div.innerHTML+="sort :"+array.sort()+"<br>"
+div.innerHTML+="sort 이후:"+array+"<br>"
+//배열.splice(시작index, 시작 index부터 갯수)
+div.innerHTML+="splice :"+array.splice(2,2)+"<br>"
+//slice는 구조에 영향x
+//splice는 추출하서 영향미침
+div.innerHTML+="최종 :"+array+"<br>"
+ 
+// ex) 물건의 가격 5개 정렬처리
+
+var array=[]
+for(var cnt=1;cnt<=5;cnt++){
+	array.push(parseInt(Math.random()*9+1)*1000)
+}
+
+
+div2.innerHTML="처음:"+array+"<br>"
+div2.innerHTML+="sort:"+array.sort()+"<br>"
+//ex2) 마지막 물건의 가격을 추출하여 출력하고 리스트에서 삭제
+div2.innerHTML+="pop:"+array.pop()+"<br>"
+div2.innerHTML+="pop이후:"+array+"<br>"
+//ex3) 1~3번째 가격을 추출하여 출력하고 삭제
+
+div2.innerHTML+="splice(1,2,3)"+array.splice(0,3)+"<br>"
+div2.innerHTML+="최종:"+array+"<br>"
+
+</script>
+</html>

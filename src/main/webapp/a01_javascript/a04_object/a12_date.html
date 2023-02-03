@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+
+/*
+ 	#Date객체
+ 		1. 날짜와 시간을 표시하는 객체
+ 		2. 생성
+ 			1) 현재날짜
+ 				var 변수명 = new Date()
+ 			2) 특정날짜
+ 				Date("영문명날짜")
+ 				Date("영문명날짜,년도")
+ 				Date("영문명날짜,년도,시:분,초")
+ 				Date(년도,월index,날짜)
+ 				// 요일 월/화/수/목/금/토/일 - 0~6
+ 				// 월(month) JAN/FEB/MAR.. -0~11
+ 				Date(년도, 월index, 날짜)
+ 				Date(년도, 월index, 날짜,시,분,초)
+ 				Date(년도, 월index, 날짜,시,분,초,1/1000초)
+ 		3.기능 메서드
+ 			1) toXXXString()
+ 			 	toLocaleString() : 해당 국가별 날짜/시간형식으로 출력
+ 			2) setXXX(입력값) : 저장처리 메서드
+ 			3) getXXX() : 저장내용 가져오는 메서드
+ 			
+ 		
+ 	# 날짜의 호출 저장 메서드
+ 		1.형식
+ 		 	getXXX():호출, setXXX():저장
+ 		2.종류
+ 			FullYear, Month, Date, Day, Hours, Minutes, Seconds, Milliseconds
+ 			ex) getFullYear(), getHours(), setSeconds(25)
+ 		
+ */
+ var div = document.body.querySelector("#container")
+ var date7 = new Date()
+ div.innerHTML+= date7.getFullYear()+"년"+(date7.getMonth()+1)+"월"+date7.getDate()+"일"
+ div.innerHTML+= date7.getHours()+"시"+date7.getMinutes()+"분"+date7.getSeconds()+"초<br>"
+ 
+ //ex) 오늘로 부터 3달이후, 오늘로부터 100시간 이후를 출력하세요
+var toDay10 = new Date() 
+ div.innerHTML+= "오늘날짜"+toDay10+"<br>"
+toDay10.setMonth(toDay10.getMonth()+3)
+div.innerHTML+=toDay10.toLocaleString()+"<br>"
+
+var toDay= new Date()
+ 			
+div.innerHTML+=toDay+"<br>"
+div.innerHTML+=toDay.toDateString()+"<br>"
+div.innerHTML+=toDay.toLocaleString()+"<br>"
+// 생성자를 통해 날짜 선언과 기본 출력메서드로 호출하기
+var date1 = new Date(2022,01,01)
+var date2 = new Date(2022,01,01,07,15,15)
+var date3 = new Date(2022,0,02,05,15,15)
+
+div.innerHTML+=date1.toLocaleString()+"<br>"
+div.innerHTML+=date2.toLocaleString()+"<br>"
+div.innerHTML+=date3.toLocaleString()+"<br>"
+
+//ex) 생성자 매개변수로 2023/01/01 15:15 설정 및 출력
+ var date4 = new Date(2023,0,01,15,15)
+// ex2) 생성자 매개변수로 2022/12/31 23:59 설정및 출력
+var date5 = new Date(2022,12,31,23,59)
+div.innerHTML+=date4.toLocaleString()+"<br>"
+div.innerHTML+=date5.toLocaleString()+"<br>"
+
+
+// 날짜 기준으로 추가하거나 뺼 수 있다.
+var toDay = new Date()
+div.innerHTML+="오늘 날짜:"+toDay.getDate()+"<br>"
+toDay.setDate(toDay.getDate()+100)// 오늘로 부터 100일 이후
+div.innerHTML+="오늘로부터 100일이후:"+toDay.toLocaleString()+"<br>"
+
+var toDay2 = new Date() //기본적으로 현재날짜부터 가져온다.
+toDay2.setDate(toDay2.getDate()-100)
+div.innerHTML+="오늘로부터 100일이후:"+toDay2.toLocaleString()+"<br>"
+
+//ex) 오늘로 부터 1000일 이후, 1000이전 출력
+var toDay3 = new Date() //기본적으로 현재날짜부터 가져온다.
+toDay3.setDate(toDay3.getDate()+1000)
+div.innerHTML+="오늘로부터 1000일이후:"+toDay3.toLocaleString()+"<br>"
+var toDay4 = new Date() //기본적으로 현재날짜부터 가져온다.
+toDay4.setDate(toDay4.getDate()-1000)
+div.innerHTML+="오늘로부터 1000일 전:"+toDay4.toLocaleString()+"<br>"
+
+var setDay = new Date(2000,0,1)
+setDay.setDate(setDay.getDate()+10000)
+div.innerHTML+="오늘로부터 10000일 후:"+setDay.toLocaleString()+"<br>"
+</script>
+</html>

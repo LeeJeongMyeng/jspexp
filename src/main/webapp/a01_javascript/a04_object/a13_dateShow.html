@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+
+/*
+ 	# Date객체 전체 날짜 시간 출력형태
+ 		1. 형식 : toXXXXString()
+ 		2. XXX
+ 			Date,GMT,ISO,UTC,JSON,Locale, LocaleDate, LocaleTime, Time
+ */
+ 
+var div = document.body.querySelector("#container")
+var date01= new Date()
+div.innerHTML+="toDateString():"+date01.toDateString()+"<br>"
+div.innerHTML+="toGMTString():"+date01.toGMTString()+"<br>"
+div.innerHTML+="toISOString():"+date01.toISOString()+"<br>"
+div.innerHTML+="toUTCString():"+date01.toUTCString()+"<br>"
+div.innerHTML+="toLocaleString():"+date01.toLocaleString()+"<br>"
+div.innerHTML+="toLocaleDateString():"+date01.toLocaleDateString()+"<br>"
+div.innerHTML+="toLocaleTimeString():"+date01.toLocaleTimeString()+"<br>"
+div.innerHTML+="toTimeString():"+date01.toTimeString()+"<br>"
+// 
+
+var date02 = new Date(2023,0,1,09,0,0)
+div.innerHTML+= date02.toLocaleString()+"<br>"
+
+div.innerHTML+= date02.getFullYear()+"년"+(date02.getMonth()+1)+"월"+date02.getDate()+"일"
+ div.innerHTML+= date02.getHours()+"시"+date02.getMinutes()+"분"+date02.getSeconds()+"초<br>"
+ 
+div.innerHTML+="날짜출력:"+date02.toLocaleDateString()+"<br>"
+div.innerHTML+="시간출력:"+date02.toLocaleTimeString()+"<br>"
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+	<div id="container"></div>
+	<h1 onclick="test2()">없음</h1>
+	<h1 onclick="test2('홍길동')">이름</h1>
+	<h1 onclick="test2('홍길동','1234')">이름비번</h1>
+	<h1 onclick="test2('홍길동','1234','rlfehd')">이름비번아이디</h1>
+	<div id="container2"></div>
+
+	<p></p>
+	<!-- 회원 정보 등록 출력처리를 가변 매개변수 함수 default데이터처리에 의해서 호출 및 수행하세요
+		regMem()
+		regMem(아이디)
+		regMem(아이디,패스워드)
+		regMem(아이디, 패스워드, 이름)
+
+	 -->
+</body>
+<script type="text/javascript">
+/*
+	# dafault 매개변수 처리
+		1. 입력되지 않을 때, 물건명만, 물건명 가격 등 매개변수에 따라서
+			default가 설정이 필요한 경우가 있을 때, 가변적으로 처리하는 형식을 말한다.
+			
+ */
+var div = document.body.querySelector("#container")
+function test(name="없음",price=0,cnt=1){
+div.innerHTML+="물건명:"+name+",가격:"+price+",갯수:"+cnt+"<br>" }
+
+test()
+test("사과")
+test("바나나",3000)
+test("오렌지",2000,3)
+
+var div2 = document.body.querySelector("#container2")
+//매개변수가없을 때, 초기화할 데이터를 설정.
+function test2(name="없음",pass='없음',id='없음'){
+div.innerHTML+="회원이름:"+name+",패스워드:"+pass+",아이디:"+id+"<br>" }
+// 
+</script>
+</html>

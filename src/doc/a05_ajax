@@ -1,0 +1,35 @@
+
+
+
+#단계별 ajax처리
+	1. 동기적 처리
+		1) 기본데이터 가져오기
+		2) 요청값 처리로 데이터 가져오기
+			form요청 데이터로 전다랳서 가져오는 처리
+
+	
+	2.	비동기적처리
+		1)화면 가져오기 
+			- 기본 로딩
+			- 요청값 처리 로딩
+		2) json데이터 가져오기
+		3) 요청+ DB연동 처리 가져오기
+		4) 비동기 설정으로 JSON데이터 가져오기
+			- 기본 json형식 서버에서 가져오기
+			- 배열형 json데이터 로딩해보기
+			- 서버에 json데이터 전달및 client에서 가져와서 처리하기
+			- 온라인상 배포되는 json데이터 가져와서 화면구성하기(빅데이터)
+			
+			
+	#gson api를 활용한 json데이터 처리
+		1. 서버에서 사용하는 데이터는 java의 class를 통한 생성
+		2. ajax로 활용되는 데이터는 json문자열을 js에서 객체로 변환해서 사용한다.
+		3. 클라이언트가 호출할 때, 서버에서 자바 객체를 json문자열로 변환해서 전달하여야 한다.
+		4. 이때, 활용되는 lib가 gson api이다. 
+		5. 환경설정 \webapp\WEB-INF\lib\gson-2.8.2.jar
+			위치를 시키고,
+		6. 호출되는 data.jsp에서 객체를 json문자열로 변환처리하여 출력한다.
+			Person p = new Person("홍길동",25,"서울")
+			Gson gson = new Gson()
+			String json = gson.toJson(p); //객체를 json문자열로 변환
+			System.out.println(json)

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+
+//ex) 구매정보 물건명, 가격, 갯수, 설정해서 3개정도 가격기준 정렬/총 비용기준 정렬처리
+var div = document.body.querySelector("#container")
+
+
+var prods=[{name:"사과",price:1000,cnt:3},{name:"바나나",price:2000,cnt:4},{name:"딸기",price:3000,cnt:5}]
+prods.push({name:"수박",price:10000,cnt:7})
+prods.push({name:"키위",price:8000,cnt:6})
+prods{}.push({name:"망고",price:7000,cnt:8})
+
+prods.sort(function(left,right){
+	// 총점 기준으로 내림차순 처리
+	lpay = left.price*left.cnt
+	rpay = right.price*right.cnt
+	
+	return rpay-lpay;
+})
+var show="<table>"
+show+="<tr><th>물건명</th><th>가격</th><th>갯수</th><th>총금액</th></tr>"
+prods.forEach(function(prod){
+	var totpay = prod.price*prod.cnt;
+	show+="<tr><td>"+prod.name+"</td>"
+				+"<td>"+prod.price+"</td>"
+				+"<td>"+prod.cnt+"</td>"
+				+"<td>"+totpay+"</td></tr>"
+		})
+
+show+="</table>"
+div.innerHTML+=show
+// 
+</script>
+</html>

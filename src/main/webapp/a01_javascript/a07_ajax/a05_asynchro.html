@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+	<h2 onclick="loadData()">데이터 화면 로딩</h2>
+	<div id="container"></div>
+	
+	<h2 onclick="loadDept()">부서정보 처리</h2>
+	<div id="container2"></div>
+</body>
+<script type="text/javascript">
+/*
+  #비동기적으로 화면 로딩 처리
+ */
+ 
+
+function loadData(){
+	 var xhr = new XMLHttpRequest()
+	 xhr.open("get","z05__Emplist.jsp",true) //비동기 방식으로 화면
+	 xhr.send()
+	 // 비동기 이벤트 선언 및 핸들러 할당.
+	 //XMLHTTP의 상대(readystate)가 변경될 떄 마다 (on chang라는 의미
+	 xhr.onreadystatechange=function(){
+		 // 전송상태check :readyState : 4 전송완료
+		 // http반응 코드가 에러가없는  200일때,
+		 if(xhr.readyState==4&& xhr.status==200){
+			 console.log(xhr.responseText)
+			 document.querySelector("#container").innerHTML = xhr.responseText
+		 }
+	 }
+} 
+ 
+
+function loadDept(){
+	var xhr= new XMLHttpRequest()
+	xhr.open("post","z06_DeptList.jsp",true)
+	xhr.send()
+	
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4&&xhr.status==200){
+			document.querySelector("#container").innerHTML=xhr.responseText
+		}
+	}
+}
+
+// 
+</script>
+</html>

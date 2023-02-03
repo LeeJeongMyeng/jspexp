@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+/*
+  #객체 개요
+  	1. 배열:[]
+  		인덱스와 요소를 통해서 활용
+  		var배열명 = [데이터,데이터2,...]
+  	2. 객체 : {}
+  		속성인 키와 할당된 값을 활용
+  		var 객체명 ={속성1:속성값, 속성2:속성2값...}
+  		객체["속성1"]:호출
+  		객체.속성1: 호출
+  		객체.속성3 = 데이터 : 새로운 속성값설정 및 데이터 할당.
+ */
+ var div= document.querySelector("#container")
+ var p01 = {name:"홍길동", age:25}
+  div.innerHTML=p01['name']+","+p01.age+"<br>"
+  p01.loc="서울" // 추가속성 처리
+  div.innerHTML+=p01['loc']+"<br>"
+  
+  div.innerHTML="";
+// ex) json 형태로 초기에 물건명만 선언
+	var p02 = {pname:"사과"}
+	div.innerHTML=p02['pname']
+	p02['price'] = 3000;
+	p02.cnt = 3;
+	
+	div.innerHTML+=p02.price
+	div.innerHTML+=p02['cnt']
+
+/*
+  #메서드
+  	1. 객체의 속성 중, 함수 자료형인 속성을 특별히 메서드라고 부른다.
+  		var객체 = {메서드:function(){함수 호출시 처리할 내용}}
+		객체.메서드()
+	2. this. :메서드에서 현재 객체의 속성을 호출할 때, 접두어로 활용한다.
+ */
+ div.innerHTML="";
+  var prod2 = {name:"사과",price:3000,cnt:5,
+			tot:function(){
+	 			return this.price*this.cnt; //가격과 갯수를 return처리
+ 			 },
+ 			  showDis:function(disRatio){
+ 				  alert("할인율:"+parseInt(disRatio*100)+"%")
+ 				  alert("총금액"+(this.tot()-(this.tot()*disRatio)))
+ 			  }		
+			}
+	div.innerHTML+=prod2.name+", 총계:"+prod2.tot()+"<br>"
+	prod2.showDis(0.2) 
+	
+// ex) num01,num02,plus(),minus() 기능메서드만들기
+div.innerHTML="";
+
+var calcu = {num01:1000,num02:5000,
+			plus:function(){return this.num01+this.num02;},
+			minus:function(){return this.num01-this.num02;}
+			}
+div.innerHTML += calcu.plus()+","+calcu.minus()+"<br>"
+</script>
+</html>

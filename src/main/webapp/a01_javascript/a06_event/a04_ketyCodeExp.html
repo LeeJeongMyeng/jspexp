@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+	아이디입력: <input type="text" name="id"/>
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+
+var div = document.body.querySelector("#container")
+
+/*
+ * 위 아이디를 입력하고 enter키를 입력했을 때만 아래 입려된 아이디는 @@@dlqslek. cnffurcjfl 
+ */
+ var id = document.querySelector("[name=id]")
+ id.onkeyup = function(){
+	if(event.keyCode==13){
+		 
+		div.innerText="입력된아이디는:"+this.value
+	}
+}
+
+</script>
+</html>

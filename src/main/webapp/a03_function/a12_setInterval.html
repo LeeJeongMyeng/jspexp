@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+	<h2></h2>
+
+</body>
+<script type="text/javascript">
+/*
+#setInterval
+1. 특정한 시간단위로 반복해서 수행할 내용이 있을 떄, 처리하는 함수
+2. 기본형식
+	setInterval(function(){반복할 내용},1/1000)
+3. 중단처리
+	해당 내용을 변수로 지정해서 
+	var int01 = setInterval(function(){반복할 내용},1/1000)
+	clearInterval(int01)로 하면 중단된다.
+	반복 수행을 메모리 해제처리
+*/
+/* var div = document.body.querySelector("#container")
+var cnt = 1;
+
+var int01=setInterval(function(){
+	div.innerHTML+=(cnt++)+"번째 안녕하세요<br>"
+	if(cnt>10){
+		clearInterval(int01)
+		alert("완료")
+	}
+},1000) */
+
+
+//ex) 출력하시겠습니까? 클릭하면 h1으로 카운트 다운 10=>9=>0
+		// 0 이되었습을 발사로 출력
+
+var h2= document.body.querySelector("h2")
+var cnt2 = 10;
+if(confirm("발사하시겠습니까?")==true){
+		var int02=setInterval(function(){
+			h2.innerHTML=(cnt2--)+"초"
+			if(cnt2<0){
+				clearInterval(int02)
+				alert("발사")
+				h2.innerHTML="발사완료"
+			}
+		},1000)
+}else{h2.innerHTML="발사취소"}
+		
+
+// 
+</script>
+</html>

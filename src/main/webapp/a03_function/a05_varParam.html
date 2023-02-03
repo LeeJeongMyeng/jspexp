@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+
+</head>
+<body>
+
+	<div></div>
+	
+	
+	<table>
+	<tr><th>짜장</th><td onclick="exp02_plus(7000),exp02_cnt(1)">추가</td><td onclick="exp02_minus(7000),exp02_cnt_m(1)">빼기</td></tr>
+	<tr><th>짬뽕</th><td onclick="exp03_plus(8000),exp03_cnt(1)">추가</td><td onclick="exp03_minus(8000),exp03_cnt_m(1)">빼기</td></tr>
+	<tr><th>짜장</th><td onclick="exp04_plus(9000),exp04_cnt(1)">추가</td><td onclick="exp04_minus(9000),exp04_cnt_m(1)">빼기</td></tr>
+	</table>
+	<div id="exp1"></div>
+	<div id="exp2">짬뽕갯수:</div>
+	<div id="exp3">탕수육갯수:</div>
+	<div id="exp4">총급액</div>
+
+</body>
+<script type="text/javascript">
+/*
+	#가변매개변수 처리2
+		1. 형식 
+			function 함수명(매개변수1, 매개변수2, ...매개변수){
+		}
+		2. 기본 매개변수 이외에 가변적인 매개변수를 ...매개변수로 선언하여 처리하는 경우를 말한다.
+		
+		ex) ...형 매개변수를 처리 활용하여, 1x3테이블에서 클릭시마다,
+				한사람의 관람비용, 2사람의 관람비용, 3사람의 관람비용을 각각 매개변수를 다르게하여, 총비용을 인원수와 함께 출력하세요.
+ */
+ 
+ 
+ 
+ 
+//var body = document.body.querySelector("div")
+
+
+/*  function fun01(var01,var02,...numbers){
+			body.innerHTML+=var01+":"+var02+":"+numbers+"<br>"
+		}*/
+		
+		
+		var tot=0;
+		var total=0;
+		var menu1cnt=0;
+
+function exp02_plus(...pays){ //pays 사용자가 정의한 배열의 이름으로 매개변수를 처리한다.
+		//for (단위데이터 of 배열)
+			for(var pay of pays){
+				tot+=pay;
+			}
+		var pObj = document.querySelector("#exp4")
+		total+=tot
+		pObj.innerHTML = "총비용:"+tot
+}
+
+function exp02_cnt(...pays){
+	for(var pay of pays){
+				menu1cnt+=pay;	
+	}
+		var pObj3 = document.querySelector("#exp1")
+		pObj3.innerHTML = "짜장 갯수:"+menu1cnt;
+}
+
+
+function exp02_minus(...pays){
+		
+			for(var pay of pays){
+				tot-=pay;
+			}
+		var pObj2 = document.querySelector("#exp4")
+		total+=tot
+		pObj2.innerHTML = "총비용:"+tot
+}
+
+function exp02_cnt_m(...pays){
+	for(var pay of pays){
+				menu1cnt-=pay;	
+	}
+		var pObj3 = document.querySelector("#exp1")
+		pObj3.innerHTML = "짜장 갯수:"+menu1cnt;
+}
+
+
+//		fun01(1000,2000)
+//		fun01(1000,2000,3000)
+//		fun01(1000,2000,3000,4000)
+//		fun01(1000,2000,3000,4000,5000)
+// 
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+var div = document.querySelector("#contains")
+function exp(obj){
+	var exp01 =obj.value.length
+	var div = document.querySelector("span")
+	if(exp01<=30){
+	div.innerText=exp01+"/30"
+	obj,value=obj.value.substring(0,20) //20자 입력을 막아버린다.
+	}else{
+		alert("30자 제한입니다.")
+	}
+}
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+	<textarea rows="3" cols="10" placeholder="입력칸" name="exp01" onkeyup="exp(this)"> </textarea>
+	<span id="contains">0/30</span>
+</body>
+<script type="text/javascript">
+
+/*
+  #String 객체
+  	1. 생성
+  		var 변수명 = "문자열"
+  		var 변수명 = new String("문자열")
+  	
+  	2. 기본 속성과 메서드
+  		length : 문자열의 길이
+  		
+  		charAt(위치) : 위치의 문자
+  		charCodeAt(위치): 위치의 유니코드 번호
+  		concat(연결문자)
+  		indexOf("검색문자",시작위치)
+  		lastIndexOf("검색문자",시작위치)
+  		match(정규식표현) :해당 데이터가 있는지 여부
+  		replace(정규식표현, 대체문자) : 특정한 문자를 변경처리
+  		search(정규식표현) : 위치
+  		split("구분자") : 특정한 문자를 구분자로 나누어서 배열로 처리
+  		slice(시작, 마지막) : 특정한 문자의 시작/마지막을 추출
+  		subsrt(시작,문자갯수): 특정한 문자를 추출
+  		substring(시작-0부터 마지막-1부터):특정한 문자를 추출
+  		toLowerCase() : 소문자변형 문자열
+  		toUpperCase() : 대문자 변형 문자열
+ */
+/* var str01 = prompt("사용할 비번을 입력하세요", "6글자 이상")
+if(str01.length <6){ //자바와 차이가 있습니다.
+	alert("6글자 이상으로 입력하세요")
+} else{
+	alert("감사합니다.")
+} */
+
+/*  ex) textarea에 입력할 때 (onkeyup) 하단에 입력한 숫자를 표현하세요 */
+
+
+
+	
+</script>
+</html>

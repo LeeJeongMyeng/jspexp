@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+	<table>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>	
+	</table>
+	<script type="text/javascript">
+	 var tdArry = document.querySelectorAll("td")
+	 var idx=0;
+	 var int01= setInterval(function(){
+		 tdArry[idx].innerText=(idx+1)
+		 tdArry[idx].style.background="yellow";
+		 if(idx==8){
+			 clearIntevla(int01)
+		 }
+		 idx++;
+	 },1000)
+	 
+	 
+	 var set01 = setInterval(function(){
+		 //초기화 처리
+		for(var idx=0; idx<tdArry.length; idx++){
+			tdArry[idx].style.backgroundcolor="yellow"
+			tdArry[idx].style.color="black"
+			tdArry[idx].style.fontSize="10px"
+		} 
+		 //0~8임의의 cell(td)에서 배경색상과 글자색상 및 크기를 처리한다.
+		var ranIdx = parseInt(Math.random()*9)
+			tdArry[ranIdx].style.backgroundcolor="pink"
+			tdArry[ranIdx].style.color="navy"
+			tdArry[ranIdx].style.fontSize="40px"
+	 },500)
+	 	var set02 = setTimeout(function(){
+	 		clearInterval(set01) // 10초 후에 반복 중반
+	 		clearTimeout(set02)
+	 	},10000)
+	 
+	 
+	</script>
+	
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+
+var div = document.body.querySelector("#container")
+div.innerHTML=""
+// 
+</script>
+</html>

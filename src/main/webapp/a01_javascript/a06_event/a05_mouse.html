@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+
+	<table height="300px;">
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+	</table>
+
+
+</body>
+<script type="text/javascript">
+
+var div = document.body.querySelector("#container")
+
+/*
+  #마우스 관련 이벤트 
+  	1.mouseover : 커서가 해당 요소객체의 상위를 시나갈 때, 처리한 내용 이벤트 핸들러 함수의 내용처리
+  	2. mouseout : 커서가 해당 요소에서 벗어났을 떄, 처리할 내용 이벤트 핸들러 함수에 내용처리
+ */
+
+ var tds = document.querySelectorAll("td")
+ var cnt1=1;
+ var cnt2=100;
+ tds.forEach(function(td){
+	 td.onmouseover=function(){
+		this.innerText=cnt1
+		div.innerText=cnt1++;
+	 
+	 }
+	 td.onmouseout=function(){
+		 this.innerText=cnt2
+		 div.innerText=cnt2++;
+		 
+	 }
+ })
+ 
+</script>
+</html>

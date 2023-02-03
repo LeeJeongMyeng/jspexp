@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+ 
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+구구단:
+	<form>
+	<input type="text" name="num11" value="9" size="2"> x
+	<input type="text" name="num12" value="2" size="2"> =
+	<input type="text" name="sum" value="0">
+	</form>
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+
+if(confirm("문제시작하겠습니까?")){
+	var num11Obj = document.querySelector("[name=num11]")
+		num11Obj.value=parseInt(Math.random()*8+2)
+	var num02Obj = document.querySelector("[name=num02]")
+		num02Obj.value=parseInt(Math.random()*9+1)
+		
+	var corVal = num11Obj.value*num02Obj.value
+	var set01 = setTimeout(function(){
+		//5초후에 수행될 내용
+		alert("시간이 종료 되었습니다.")
+		var inputVal = parseInt(document.querySelector("[name=sum]").value)
+		if (corVal==inputVal){
+			alert("정답")
+			}else{alert("오답")}
+		clearTimeout();
+	},5000)
+}
+
+/*
+  setTimeout
+  	1. 특정한 시간이 지나 후, 수행될 내용을 처리를 할 때, 활용된다
+  	2. 기본형식
+  		setTimeout(수행할 내용,1/1000초시간)
+  	3. 자원해제
+  		해당 내용을 수행한 후에는 반드시 자원해제를 하여야 메모리 부하를 줄여준다.
+  		특히, 반복적으로 수행될 경우는 자원해제를 하지않으면 메모리 overflow현상이 발생
+  			var sett01 =setTimeout(function(){
+  				//5초 이후 수행할 내용기술
+  				
+  				//마지막 라인에서 clearTimeout()내장 메서드를 통해서 자원해제 정리..
+  			},5000);
+  			
+ */
+ 
+var div = document.body.querySelector("#container")
+/*if(confirm("3초 후 출력")){
+	setTimeout(function(){
+		div.innerHTML="<h2>안녕하세요</h2>"
+	},3000)
+div.innerHTML=""
+} */
+
+
+// ex) 
+// 
+</script>
+</html>

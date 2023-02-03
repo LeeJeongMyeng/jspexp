@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+*/
+</style>
+<script>
+/*
+*/
+</script>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+/*
+ #json 객체
+ 	1. {속성:속성값, 속성:속성값...}
+ 	
+ 	var p01 ={name:"홍길동",age:25,loc:"서울"}
+ 
+ #클래스모양 객체
+ calss Person{ }
+ 
+ #for in 구문의 객체사용
+ 	객체 안에 속성의 갯수와 상관없이 반복문을 이용해서 속성을 뽑아주는 역할을 한다.
+ 	
+ 	
+ #for in구문의 객체 사용
+ 	1. 형식
+ 		for(var prop in 객체){
+ 			prop:객체속의 속성
+ 			객체[prop] :객체의 속성값
+ 		}
+ 
+ 	ex) p01['name'] ==>"홍길동"
+
+ 	
+ 
+ 
+ 	
+ 
+ */
+ var p01 ={name:"홍길동",age:25,loc:"서울"}
+ // p01.name, p01['name']으로도 접근이 가능하다.
+ var body = document.body
+ for(let prop in p01){
+	 body.innerHTML+=prop+":"+p01[prop]+"<br>" 	 
+ }
+ 
+ var prod01 = {pname:"사과",price:1000, cnt:3}
+ for(let prop2 in prod01){
+	 body.innerHTML+=prop2+":"+prod01[prop2]+"<br>" 
+ }
+ 
+ var music ={mname1:"노래제목1",singer1:"가수1",year:221010, mname2:"제목3",singer2:"가수2",year2:221011,mname3:"제목2",singer3:"가수3",year3:221012}
+ var body = document.body
+ for(let prop3 in music){
+	 body.innerHTML+=prop3+":"+music[prop3]+"<br>" 	  
+ }
+</script>
+</html>

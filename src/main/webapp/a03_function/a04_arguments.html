@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+
+</head>
+<body>
+		<h2 onclick="buy()">아직 구매 안됨</h2>
+		<h2 onclick="buy('사과')">아직 구매 안됨</h2>
+		<h2 onclick="buy('바나나',3000)">아직 구매 안됨</h2>
+		<h2 onclick="buy('오렌지',2000,4)">아직 구매 안됨</h2>
+		<p></p>
+
+		<h3 onclick="callexp()"> 매개1</h3>
+		<h3 onclick="callexp('사과')"> 매개2</h3>
+		<h3 onclick="callexp('바나나',3000)"> 매개3</h3>
+		<h3 onclick="callexp('오렌지',2000,4)"> 매개4</h3>
+
+		<div></div>
+</body>
+<script type="text/javascript">
+/*
+	ex) buy(),buy('사과'),buy('바나나',3000,2)
+		buy('오렌지',2000,4) 와 같이 매개변수를 통해
+ */
+var p=document.querySelector("p")
+function buy(){
+		if(arguments.length==0){
+			
+			p.innerHTML="구매없음<br>"
+		}else{
+			var add=""
+			for(var idx in arguments){
+				add+=arguments[idx]+" "
+			}
+			p.innerHTML+=add+"<br>"
+		}
+	}
+ 
+var body = document.body.querySelector("div");
+body.innerHTML="";
+function callexp(){
+	var showexp="";
+	for(var idx in arguments){
+		showexp+=arguments[idx]+","
+	}
+	body.innerHTML+=showexp+"<br>"
+}
+
+// 
+</script>
+</html>

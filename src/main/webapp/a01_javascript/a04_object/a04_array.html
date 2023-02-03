@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+	<div id="exp"></div>
+
+</body>
+<script type="text/javascript">
+var show = document.querySelector("#container")
+
+/*
+  #객체의 메모리 사용
+  	1. 일반변수 tack그대로 할당
+  		var num01=25
+  		var num02= num01
+  		num02 = 30
+  		num01(25),num02(30)으로 설정된다.
+  	
+  	2. 객체 stack/heap사용
+  		대입연산자에 의해 할당되면 heap영역에 주소값이 할당되기때문에 
+  		대입연산자로 할당된 모든 객체를 동일한 주소를 가지고 있어서
+  		한쪽에 변경이 되면 다른 대입 연산자 할당 참조변수도 동일한 주소를 호출해서
+  		동일하게 처리가 된다.
+  		
+  		var p01 = {name:"홍길동",age:25}
+  		var p02 = p01; //heap영역의 주소를 할당한다.
+  		p02.name = "김길동" // 동일한 주소를 사용하는 p01의 name도 변경이 된다.
+  		var p03 = {...p01} //초기에 데이터값/속성을 다른 주소에 객체로 생성한다. 
+  		p03.name = "마길동" 위 p01,p02에 영향을 미치지 않는다.
+  	3. 배열도 객체에 종속되기에 index값에 대한 처리를 위와 같이 메로리 할당에 영향을 미친다.
+  	
+ 
+ 
+ 
+ 
+ 
+ 
+  # 배열데이터의 복사 및 활용
+  	1. 객체형 데이터의 복사
+ */
+ var num01 = 25
+ var num02 = num01
+ num02=30
+ // 일반 변수는 stack영역에 데이터를 바로 할당하기에 대입을 해도 다른 메모리를 사용한다.
+ show.innerHTML=num01+"<br>"
+ show.innerHTML+=num02+"<br>"
+ 
+ 
+ var array01 = [1000,2000,3000]
+ var array02 = array01
+ array02[0] = 5000
+// 배열을 포함한 객체는 대입연산자에 의해 객체가 실제 저장하는 주소값을 할당하기에
+// 주소를 복사해서 할당했으므로, 동일한 객체를 참조하기에 이름이 다르지만
+// 동일한 객체를 바라보고있어서 한쪽에 데이터가 변경되는 다른쪽도 동일하게 처리된다.
+ 
+ show.innerHTML += array01+"<br>"
+ show.innerHTML += array02+"<br>"
+ 
+ //아에 새로운 배열에 담아버렸기에 그런듯..?
+ var array03=[...array01]
+ // ...(spread keyword)를 이용하여 배열을 선언하면, 구조와 데이터를 복사해서
+ // 새로운 heap영역에 객체를 생성한다.
+ // 다른 메모리를 사용하여 처리한다.
+ 
+ array03[0] =7000
+ 
+ show.innerHTML += "<h2>...에 의해 복사 후</h2>"
+ show.innerHTML += array01+"<br>"
+ show.innerHTML += array02+"<br>"
+ show.innerHTML += array03+"<br>"
+
+ 
+ //ex)  fruit01로 과일명 3개를 선언하고, fruit02에 대입으로 복사, fruit03에 의해 복사한 후
+ 
+ 
+ var div=document.querySelector("#exp")
+ var fruit01 = ["사과","딸기","바나나"]
+ var fruit02 = fruit01
+ var fruit03 = [...fruit01]
+ fruit01[1]="수박" 
+ div.innerHTML = fruit01+"<br>"
+ div.innerHTML += fruit02+"<br>"
+ div.innerHTML += fruit03+"<br>"
+ 
+ 
+ 
+ var p01 = {name:"홍길동",age:25,loc:"서울신림"}
+ var p02 = p01
+ var p03 = {...p01}
+ p01.name="마길동"
+ //JSON.Stringify(객체) : 객체를 문자열로 변환해서 활용
+ //JSOM 문자열과 데이터는 구분해야한다.
+ //1. 온라인 상으로 데이터를 전송하는 규칙은 JSON 문자열을 전달한다.
+ //2. 이 문자열 객체로 활용할 수 없다.
+ //3. JSON형태로 객체화 하기도하고, 문자열로 변환하기도 한다.
+ /*
+ 		클라이언트1		-->  JSON문자열   ------>    서버(JSON문자열 ==>JSON객체==>ArrayList)
+ 		(json객체를 json문자열로 바꿔서보냄)
+ 		클라이언트2		<--  JSON문자열   <-----
+ 		(JSON문자열 ==>JSON객체)
+ */
+ // JSON.paese(): json문자열을 객체로 변환해서 활용
+ // {"key":"value","key":value}
+ 
+ 		div.innerHTML +="<h2>객체 복사 후</h2>"
+		 div.innerHTML += JSON.stringify(p01)+"<br>"
+		 div.innerHTML += JSON.stringify(p02)+"<br>"
+		 div.innerHTML += JSON.stringify(p03)+"<br>"
+	var jsonString = JSON.stringify(p03)
+    var jObj = JSON.parse(jsonString)
+    console.log(jObj)
+    div.innerHTML+=jObj.name+","+jObj.age+","+jObj.loc+"<br>"
+	
+</script>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+	<div id="container2"></div>
+
+
+</body>
+<script type="text/javascript">
+/*
+   1. sort는 숫자의 크기가아니라 무적건적으로 맨 앞자리 숫자에 의해 정렬이 되는것이 한계이다.
+   
+   2. 숫자의 데이터를 비교해서 정리를 위한처리..
+   	배열.sort(function(left,rigth){ 오름차순
+   		return left - right; // 0,+,-값에 따라서 정렬을 처리
+   	})
+   	배열.sort(function(left,rigth){ 내림차순
+   		return left - right; // 0,+,-값에 따라서 정렬을 처리
+   	})
+   
+   3. 객체형 배열데이터의 정렬처리..
+   		1) 특정한 속성을 기준으로 오름 내림 차순 처리
+   		var points=	
+   					[
+						{kor:70,eng:80,math:90},
+		   				{kor:80,eng:80,math:90},
+		   				{kor:90,eng:80,math:90},
+   					]
+   		points.sort(function(left,right){
+   			// left,right 속성이 포함된 단위 객체를 지칭..
+   			//특정한 속성을 기준으로 처리할려면 left.속성 접근해서 처리
+   			
+   			return left.kor-right.kor // 국어점수순으로 정리
+   			return right.eng-left.eng //영어점수순으로 처리
+   			
+   			lavg = (left.tor+left.eng+left.math)/3
+   			ravg = (right.tor+right.eng+right.math)/3
+   			
+   			return lavg-ravg //평균기준
+   		})
+ */
+var div = document.body.querySelector("#container")
+var array = [52,273,103,32]
+var array1 = [52,73,32,12]
+var array2 = [152,273,332,412]
+var array3 = [51,1,273,332,4324,412]
+array.sort(); array1.sort(); array2.sort(); array3.sort();
+div.innerHTML+=array+"<br>"
+div.innerHTML+=array1+"<br>"
+div.innerHTML+=array2+"<br>"
+div.innerHTML+=array3+"<br>"
+
+var array=[52,273,103,32]
+array.sort(function(left,right){
+	return left-right; // 그대로 내려오기에 기본 순차정렬인 오른차순
+})
+div.innerHTML+="기능 처리후 오름차순 정렬:"+array+"<br>"
+array.sort(function(left,right){
+	return right-left; //X형식으로 바꿔주기에 역순위 차순이 된다.
+})
+div.innerHTML+="기능 처리후 오름차순 정렬:"+array+"<br>"
+
+//ex) 1~9999범위안에 숫자 5개를 배열로 가져와서 최고높은 값
+var array4 = []
+
+for(var cnt=0; cnt<5;cnt++){
+	array4.push(parseInt(Math.random()*9999+1))
+}
+div.innerHTML+=array4.sort(function(left,right){
+	return right-left;
+})+"<br>"
+
+//ex) 학생별로 번호, 국어/영어/수학 점수가 있을 때, 국어점수가 가장 높은 학생, 영어점수가 가장 낮은 학생별로 정렬처리
+var div2 = document.body.querySelector("#container2")
+var studs=[]
+for(var cnt=1;cnt<=25; cnt++){
+	var stud = {}
+	stud.cnt=cnt+""
+	stud.kor=parseInt(Math.random()*101)
+	stud.eng=parseInt(Math.random()*101)
+	stud.math=parseInt(Math.random()*101)
+	studs.push(stud)
+	
+}
+
+studs.sort(function(left,right){
+	return right.kor-left.kor;
+})
+div2.innerHTML+="<h2>내림차순 성적 정리</h2>"
+studs.forEach(function(stud){
+	div2.innerHTML+=stud.cnt+"번==>"+stud.kor+"점:"+stud.eng+"점:"+stud.math+"점<br>"
+})
+</script>
+</html>

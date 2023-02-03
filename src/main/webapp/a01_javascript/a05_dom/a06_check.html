@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+	<h2>좋아하는 과일 선택</h2>
+	<input type="checkbox" name="favFoods" value="사과"/>사과
+	<input type="checkbox" name="favFoods" value="딸기"/>딸기
+	<input type="checkbox" name="favFoods" value="바나나"/>바나나
+	<input type="checkbox" name="favFoods" value="망고"/>망고
+	<input type="checkbox" name="favFoods" value="수박"/>수박
+	<input type="checkbox" name="ckAll" onclick="ckAllFn(this)"/>전체
+
+	<div id="container"></div>
+
+
+	<h2>tv</h2>
+	<input type="checkbox" name="tv" value="음악"/>음악
+	<input type="checkbox" name="tv" value="영화"/>영화
+	<input type="checkbox" name="tv" value="드라마"/>드라마
+	<input type="checkbox" name="tv" value="토크"/>토크
+	<div id="container2"></div>
+
+
+</body>
+<script type="text/javascript">
+var div = document.body.querySelector("#container")
+var favFoods = document.querySelectorAll("[name=favFoods]")
+//favFoods[1].checked=true //두번째 체크박스를 기본적으로 지정해놓음
+
+
+	for(var idx=0; idx<favFoods.length;idx++){
+		// 각요소 객체를 이벤트 할당
+		favFoods[idx].onclick=function(){
+			ckData();
+		}
+	}
+
+	function ckData(){ //체크된 값을 넣기
+		var add="";
+	//여러개가 선택되기 때문에 for문으로 체크된것만 확인
+		for(var idx=0;idx<favFoods.length;idx++){
+			if(favFoods[idx].checked){
+				add+=favFoods[idx].value+",";
+			}
+		}
+		div.innerText=add
+	}
+	function ckAllFn(obj){//전체클릭 기능(체크하나풀렷을떄도 적용해야함)
+		//해당 내용이 checked가 true이면 전체 checked
+		// false이면 전체 false
+		for(var idx=0; idx<favFoods.length;idx++){
+			
+			favFoods[idx].checked = obj.checked	
+		}	
+	}
+//=========================================================================
+	var div2 = document.body.querySelector("#container2")
+	var tvs = document.querySelectorAll("[name=tv]")
+	for(var idx=0; idx<tvs.length; idx++){
+		tvs[idx].onclick=function(){
+			cktv();
+		}
+	}
+
+	function cktv(){
+		var add2="";
+		for(var idx=0; idx<tvs.length; idx++){
+			if(tvs[idx].checked){
+				add2+=tvs[idx].value+","
+			}
+		}
+		div2.innerText=add2
+	}
+
+
+
+// 
+</script>
+</html>

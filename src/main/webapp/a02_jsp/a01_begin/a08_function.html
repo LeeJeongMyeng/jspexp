@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+*/
+</style>
+<script>
+/*
+ ex) 입력 form으로 물건명, 가격, 갯수를 입력후, 계산 버튼 클릭시 하단에 
+ */
+ function call07(){
+		//alert();
+		//input에 입력된 데이터를 가져온다.
+		//form요소개체의 입력된 데이터는 value라는 속성으로 가져올 수 있다.
+		var num01Val = document.querySelector("[name=num01]").value;
+		var num02Val = document.querySelector("[name=num02]").value;
+		//문자열을 + 연산처리는 이어주는 처리를 하기 때문에 js에 지원하는 숫자형변환
+		//함수를 통해 변환후, 총합산값을 처리한다.
+		//함수(Number())를 통해 변환 후, 총합산처리
+		var tot= Number(num01Val)+Number(num02Val);
+		// 출력할 대상 객체를 DOM으로 선언한다.
+		var h3Obj= document.querySelector("h3");
+		// .innerText 출력형식에 맞추어 출력처리한다.
+		h3Obj.innerText = num01Val+"+"+num02Val+"="+tot
+	}
+ 
+ function call08(){
+	 var pnameVal=document.querySelector("[name=pname]").value;
+	 var priceVal=document.querySelector("[name=price]").value;
+	 var countVal=document.querySelector("[name=count]").value;
+	 
+	 var totpay = Number(priceVal)*Number(countVal);
+	 
+	 var expObj=document.querySelector("#totpay")
+	 expObj.innerText = pnameVal+":"+priceVal+"+"+countVal+"="+totpay;
+ }
+
+</script>
+</head>
+<body>
+	물건명:<input type="text" name="pname"><br>
+	가격:<input type="text" name="price"><br>
+	개수:<input type="text" name="count"><br>
+		<input type="button" value="계산하기" onclick="call08()">
+	<h2 id="totpay">계산결과</h2>
+	<h2>계산결과</h2>
+</body>
+<script type="text/javascript">
+/*
+ * 
+ */
+</script>
+</html>

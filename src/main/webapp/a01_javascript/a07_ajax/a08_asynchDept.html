@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+/*
+  # 비동기식으로 DB와 연동해서 요청값을 전달하는 ajax 처리 순서
+ 	 1. 화면구성/form하위 객체선언
+ 	 2. dom객체 선언
+ 	 	1) value
+ 	 	2) 이벤트 처리내용(onclick, onkeyup(event.keyCode)..)
+ 	 3. 이벤트 핸들러 함수 선언
+ 	 	1)query string만들기.. --> var qsyt = ?name=+name
+  			서버에 보낼 query string(key=value&key2=value2)
+  		2) ajax 처리할 내용
+  			객체 생성
+  			open 설정
+  			보내기
+  			onreadystatechange=function(){
+  				조건(상태 처리)
+  				 xhr.responseText
+  			}
+  	  4. 데이터를 처리할 jsp화면/json구성
+  	  	1) 요청값 받기
+  	  	2) DB연결 및 결과 처리
+ */
+</script>
+</head>
+<body>
+<form>
+		<table>
+			<tr><th>부서이름</th><td><input class="schDept" type="text" name="dname" value=""></td></tr>
+			<tr><th>위치</th><td><input class="schDept" type="text" name="loc" value=""></td></tr>
+			<tr><td colspan="2"><input type="submit" value="검색x">
+			<input type="button" style="background-color:gray;" value="등록" id="schDeptBtn" onclick="goInputPage()"/></td></tr>
+		</table>
+	</form>
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+/*
+  # 처리순서
+  	1. DOM객체 선언(대상객체, 검색객체)
+  	2. 검색 요청값 메서드 선언(공통)
+  		:페이지와 요청값을 queryString으로 만드는 공통 메서드
+  	3. ajax처리 이벤트 핸들러 공통 메서드
+  		1) XMLHttpRequest 객체 생성
+  		2) 서버 호출
+  		3) 비동기 처리기능 메서드 선언
+  	4. 이벤트 및 이벤트 핸들러 선언
+  		1)공통검색 메서드 선언
+  		2) 이벤트에 이벤트 핸들러 할당
+ */
+
+
+var dnameOb=document.querySelector("[name=dname]")
+var locOb=document.querySelector("[name=loc]")
+var DeptSchArr=document.querySelectorAll(".schDept")
+var schDeptBtn=document.querySelector("#schDeptBtn")
+
+
+DeptSchArr.forEach(function(sch){
+	sch.onkeyup=function(){
+		var dname= dnameOb.value
+		 var loc= locOb.value
+		var deptStr = "?dname="+dname+"&loc="+loc
+		console.log(deptStr)
+		loadDeptDate(deptStr)
+	}
+})
+
+function loadDeptDate(deptStr){
+	 var xhr = new XMLHttpRequest()
+	 xhr.open("get","z06_DeptList.jsp"+deptStr,true) //비동기 방식으로 화면
+	 xhr.send()
+	 // 비동기 이벤트 선언 및 핸들러 할당.
+	 //XMLHTTP의 상대(readystate)가 변경될 떄 마다 (on chang라는 의미
+	 xhr.onreadystatechange=function(){
+		 // 전송상태check :readyState : 4 전송완료
+		 // http반응 코드가 에러가없는  200일때,
+		 if(xhr.readyState==4&& xhr.status==200){
+			 console.log(xhr.responseText)
+			 document.querySelector("#container").innerHTML = xhr.responseText
+		 }
+	 }
+} 
+ 
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/a00_com/a01_common.css" rel="stylesheet">
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+
+	<div id="container"></div>
+
+
+</body>
+<script type="text/javascript">
+
+var div = document.body.querySelector("#container")
+
+var studs=[]
+for(var cnt=1;cnt<=25; cnt++){
+	var stud = {}
+	stud.cnt=cnt+""
+	stud.kor=parseInt(Math.random()*101)
+	stud.eng=parseInt(Math.random()*101)
+	stud.math=parseInt(Math.random()*101)
+	studs.push(stud)
+	
+}
+
+studs.sort(function(left,right){
+	// 총점 기준으로 내림차순 처리
+	lTot = left.kor+left.eng+left.math
+	rTot = right.kor+right.eng+right.math
+	
+	return rTot-lTot;
+})
+div.innerHTML+="<h2>내림차순 영어성적 정리</h2>"
+var show="<table>"
+show+="<tr><th>번호</th><th>국어</th><th>영어</th><th>수학</th><th>평균</th></tr>"
+
+studs.forEach(function(stud){
+	var avg = ((stud.kor+stud.eng+stud.math)/3).toFixed(2)
+	show+="<tr><td>"+stud.cnt+"</td>"
+				+"<td>"+stud.kor+"</td>"
+				+"<td>"+stud.eng+"</td>"
+				+"<td>"+stud.math+"</td>"
+				+"<td>"+avg+"</td></tr>"
+		})
+show+="</table>"
+div.innerHTML+=show
+// 
+</script>
+</html>
